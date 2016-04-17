@@ -5,18 +5,15 @@
  * Date: 4/15/16
  */
 
-namespace app\controllers;
+namespace app\view\controllers;
 
-class Page2Controller extends Controller
-{
+class Page2Controller extends Controller {
 
-    public function getPageName()
-    {
+    public function getPageName() {
         return 'page2';
     }
 
-    public function getPageVars()
-    {
+    public function getPageVars() {
         $vars = [];
         $vars['test2'] = 'page 2 now';
         return $vars;

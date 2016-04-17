@@ -5,25 +5,24 @@
  * Date: 4/15/16
  */
 
-namespace app\controllers;
+namespace app\view\controllers;
 
-class MainController extends Controller
-{
+use app\data\Database;
+
+class MainController extends Controller {
     private $pageVars = [];
 
-    public function getPageName()
-    {
+    public function getPageName() {
         return 'main';
     }
 
-    public function getPageVars()
-    {
+    public function getPageVars() {
+        $test = new Database();
         $this->pageVars['test']  = 'my get message';
         return $this->pageVars;
     }
 
-    public function posted()
-    {
+    public function posted() {
         $this->pageVars['post'] = $_POST['first'];
     }
 }

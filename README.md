@@ -1,3 +1,3 @@
 # SimpleSite #
 
-A basic web framework for making basic sites.
+A simple web framework for making simple sites.

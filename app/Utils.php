@@ -7,9 +7,9 @@
 
 namespace app;
 
-class Utils
-{
+class Utils {
     public static function getDocumentRoot() {
+        // Back one directory because index.php is in the public directory
         return dirname($_SERVER['DOCUMENT_ROOT']);
     }
 }

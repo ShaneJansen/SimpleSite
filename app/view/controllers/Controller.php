@@ -5,12 +5,11 @@
  * Date: 4/15/16
  */
 
-namespace app\controllers;
+namespace app\view\controllers;
 
 use app\Utils;
 
-abstract class Controller
-{
+abstract class Controller {
     public abstract function getPageName();
     public function getPageVars() {
         return [];
@@ -19,6 +18,6 @@ abstract class Controller
 
     public function display() {
         $vars = $this->getPageVars();
-        require (Utils::getDocumentRoot() . '/app/html/' . $this->getPageName() . '.php');
+        require (Utils::getDocumentRoot() . '/app/view/html/' . $this->getPageName() . '.php');
     }
 }

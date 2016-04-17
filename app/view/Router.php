@@ -5,10 +5,9 @@
  * Date: 4/15/16
  */
 
-namespace app;
+namespace app\view;
 
-abstract class Router
-{
+abstract class Router {
     public abstract function routePage($urlParts);
 
     public function run() {

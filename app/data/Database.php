@@ -52,6 +52,7 @@ class Database {
 
     public function query($sql, $params = []) {
         $stmt = $this->dbConnection->prepare($sql);
-        return $stmt->execute($params);
+        $stmt->execute($params);
+        return $stmt;
     }
 }

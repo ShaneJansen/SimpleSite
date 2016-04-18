@@ -22,7 +22,9 @@ class MyRouter extends Router {
                 return new MainController();
                 break;
             case 'login':
-                return new LoginController();
+                $loginController = new LoginController();
+                if (isset($urlParts[1]) && $urlParts[1] == 'logout') $loginController->logout();
+                else return $loginController;
                 break;
             case 'edit':
                 return new EditController();

@@ -6,6 +6,9 @@
 
 namespace app\view\controllers;
 
+use app\data\Database;
+use app\data\repositories\UserRepo;
+
 class LoginController extends Controller {
     private $pageVars = [];
 
@@ -20,7 +23,20 @@ class LoginController extends Controller {
     public function posted() {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $this->pageVars['test'] = $username;
-        $this->pageVars['test2'] = $password;
+        $loginRepo = new UserRepo(new Database());
+        $user = $loginRepo->getUser($username, $password);
+        if ($user == null) $this->pageVars['error'] = 'Incorrect username or password';
+        else {
+            session_start();
+            $_SESSION['username'] = $username;
+            header('Location: /edit');
+        }
+    }
+
+    public function logout() {
+        session_start();
+        session_unset();
+        session_destroy();
+        die(header('Location: /login'));
     }
 }

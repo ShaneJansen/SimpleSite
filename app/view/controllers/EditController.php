@@ -7,6 +7,12 @@
 namespace app\view\controllers;
 
 class EditController extends Controller {
+    public function __construct() {
+        // Check if we are logged in
+        session_start();
+        if (!isset($_SESSION['username'])) die(header('Location: /login'));
+    }
+
     public function getPageName() {
         return 'edit';
     }

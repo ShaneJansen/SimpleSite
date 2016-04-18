@@ -3,6 +3,7 @@
 <body>
     <div class="container">
         Main Page
+        <?php echo $vars['description']; ?>
     </div>
 </body>
 

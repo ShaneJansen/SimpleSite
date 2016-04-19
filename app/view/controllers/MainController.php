@@ -13,10 +13,6 @@ use app\data\repositories\MainPageRepo;
 class MainController extends Controller {
     private $pageVars = [];
 
-    public function getPageName() {
-        return 'main';
-    }
-
     public function getPageVars() {
         $mainPageRepo = new MainPageRepo(new Database());
         $mainPage = $mainPageRepo->getPageData();
@@ -24,7 +20,7 @@ class MainController extends Controller {
         return $this->pageVars;
     }
 
-    public function posted() {
-        $this->pageVars['post'] = $_POST['first'];
+    public function getMain() {
+        return 'main';
     }
 }

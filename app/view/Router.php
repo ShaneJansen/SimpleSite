@@ -8,13 +8,21 @@
 namespace app\view;
 
 abstract class Router {
-    public abstract function routePage($urlParts);
+    public abstract function routeGet($urlParts);
+    public abstract function routePost($urlParts);
 
     public function run() {
-        $urlParts = explode('/', $_SERVER['REQUEST_URI']);
-        array_shift($urlParts);
-        $page = $this->routePage($urlParts);
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') $page->posted();
-        $page->display();
+        $requestUri = $_SERVER['REQUEST_URI'];
+        $route = new \stdClass();
+        $page = '';
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $route = $this->routeGet($requestUri);
+            $page = $route->getController()->{$route->getMethod()}();
+        }
+        else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $route = $this->routePost($requestUri);
+            $page = $route->getController()->{$route->getMethod()}();
+        }
+        $route->getController()->displayPage($page);
     }
 }

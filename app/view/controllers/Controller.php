@@ -10,14 +10,12 @@ namespace app\view\controllers;
 use app\Utils;
 
 abstract class Controller {
-    public abstract function getPageName();
     public function getPageVars() {
         return [];
     }
-    public function posted() {}
 
-    public function display() {
+    public function displayPage($pageName) {
         $vars = $this->getPageVars();
-        require (Utils::getDocumentRoot() . '/app/view/html/' . $this->getPageName() . '.php');
+        require (Utils::getDocumentRoot() . '/app/view/html/' . $pageName . '.php');
     }
 }

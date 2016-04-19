@@ -12,15 +12,15 @@ use app\data\repositories\UserRepo;
 class LoginController extends Controller {
     private $pageVars = [];
 
-    public function getPageName() {
-        return 'login';
-    }
-
     public function getPageVars() {
         return $this->pageVars;
     }
 
-    public function posted() {
+    public function getLogin() {
+        return 'login';
+    }
+
+    public function postLogin() {
         $username = $_POST['username'];
         $password = $_POST['password'];
         $loginRepo = new UserRepo(new Database());
@@ -33,7 +33,7 @@ class LoginController extends Controller {
         }
     }
 
-    public function logout() {
+    public function postLogout() {
         session_start();
         session_unset();
         session_destroy();

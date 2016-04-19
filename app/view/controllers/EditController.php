@@ -13,7 +13,7 @@ class EditController extends Controller {
         if (!isset($_SESSION['username'])) die(header('Location: /login'));
     }
 
-    public function getPageName() {
+    public function getEdit() {
         return 'edit';
     }
 }

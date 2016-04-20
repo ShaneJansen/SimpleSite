@@ -25,11 +25,14 @@ class LoginController extends Controller {
         $password = $_POST['password'];
         $loginRepo = new UserRepo(new Database());
         $user = $loginRepo->getUser($username, $password);
-        if ($user == null) $this->pageVars['error'] = 'Incorrect username or password';
+        if ($user == null) {
+            $this->pageVars['error'] = 'Incorrect username or password';
+            return 'login';
+        }
         else {
             session_start();
             $_SESSION['username'] = $username;
-            header('Location: /edit');
+            die(header('Location: /edit'));
         }
     }
 

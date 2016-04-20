@@ -17,18 +17,18 @@ require_once dirname($_SERVER['DOCUMENT_ROOT']) . '/app/AutoLoader.php';
 
 class MyRouter extends Router {
     public function routeGet($urlParts) {
-        switch ($urlParts[0]) {
+        switch ($urlParts) {
             case '/': return new Route(new MainController(), 'getMain'); break;
             case '/login': return new Route(new LoginController(), 'getLogin'); break;
+            case '/login/logout': return new Route(new LoginController(), 'postLogout'); break;
             case '/edit': return new Route(new EditController(), 'getEdit'); break;
         }
         return new Route(new NotFoundController(), 'getNotFound');
     }
 
     public function routePost($urlParts) {
-        switch ($urlParts[0]) {
-            case 'login': return new Route(new LoginController(), 'postLogin');
-            case '/login/logout': return new Route(new LoginController(), 'postLogout'); break;
+        switch ($urlParts) {
+            case '/login': return new Route(new LoginController(), 'postLogin');
         }
         return new Route(new NotFoundController(), 'getNotFound');
     }

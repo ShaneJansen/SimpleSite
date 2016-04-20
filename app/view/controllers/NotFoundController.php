@@ -8,7 +8,7 @@
 namespace app\view\controllers;
 
 class NotFoundController extends Controller {
-    public function getPageName() {
+    public function getNotFound() {
         return 'not_found';
     }
 }

@@ -1,0 +1,19 @@
+.navbar {
+    margin-bottom: 0;
+}
+
+.footer {
+    margin-top: 10px;
+}
+
+.spacer-medium {
+    margin-top: 50px;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}

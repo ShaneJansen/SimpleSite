@@ -2,6 +2,8 @@
 
 <body>
     <div class="container">
+        <div class="spacer-medium"></div>
+
         <div class="center-block" style="max-width: 300px;">
             <form method="post">
                 <div class="form-group">
@@ -12,11 +14,11 @@
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                 </div>
-                <span style="color: red;">
-                    <?php if (isset($vars['error'])) echo $vars['error'] ?>
+                <span class="error">
+                    <?php if (isset($vars['error'])) echo $vars['error']; ?>
                 </span>
                 <br>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-primary">Login</button>
             </form>
         </div>
     </div>

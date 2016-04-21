@@ -13,10 +13,15 @@ class MainPageRepo extends Repo {
         parent::__construct($database);
     }
 
-    public function getPageData() {
-        $pdo = $this->getDatabase()->query('SELECT * FROM page_main ORDER BY id DESC LIMIT 1',
-            []);
+    public function getPage() {
+        $pdo = $this->getDatabase()->query('SELECT * FROM page_main ORDER BY id DESC LIMIT 1', []);
         $result = $pdo->fetch();
         return new MainPage($result['id'], $result['description']);
+    }
+
+    public function updatePage($id, $description) {
+        $pdo = $this->getDatabase()->query('UPDATE page_main SET description=:description WHERE id=:id',
+            ['description'=>$description, 'id'=>$id]);
+        $pdo->execute();
     }
 }

@@ -15,7 +15,7 @@ class MainController extends Controller {
 
     public function getPageVars() {
         $mainPageRepo = new MainPageRepo(new Database());
-        $mainPage = $mainPageRepo->getPageData();
+        $mainPage = $mainPageRepo->getPage();
         $this->pageVars['description'] = $mainPage->getDescription();
         return $this->pageVars;
     }

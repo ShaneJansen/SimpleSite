@@ -29,6 +29,7 @@ class MyRouter extends Router {
     public function routePost($urlParts) {
         switch ($urlParts) {
             case '/login': return new Route(new LoginController(), 'postLogin');
+            case '/edit': return new Route(new EditController(), 'postEdit');
         }
         return new Route(new NotFoundController(), 'getNotFound');
     }

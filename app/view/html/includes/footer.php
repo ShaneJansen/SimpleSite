@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
-        <div style="margin-top: 10px;">
+        <div class="footer">
             KACADA © 2016
         </div>
     </div>

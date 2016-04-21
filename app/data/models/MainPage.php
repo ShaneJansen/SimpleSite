@@ -46,6 +46,4 @@ class MainPage {
     public function setDescription($description) {
         $this->description = $description;
     }
-
-    
 }

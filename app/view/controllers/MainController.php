@@ -9,6 +9,7 @@ namespace app\view\controllers;
 
 use app\data\Database;
 use app\data\repositories\MainPageRepo;
+use app\Utils;
 
 class MainController extends Controller {
     private $pageVars = [];
@@ -16,7 +17,9 @@ class MainController extends Controller {
     public function getPageVars() {
         $mainPageRepo = new MainPageRepo(new Database());
         $mainPage = $mainPageRepo->getPage();
-        $this->pageVars['description'] = $mainPage->getDescription();
+        $mainPage->setDescription(Utils::textToHtml($mainPage->getDescription()));
+        $mainPage->setMissionStatement(Utils::textToHtml($mainPage->getMissionStatement()));
+        $this->pageVars['mainPage'] = $mainPage;
         return $this->pageVars;
     }
 

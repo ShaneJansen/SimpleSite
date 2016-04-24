@@ -7,16 +7,18 @@
 namespace app\data\models;
 
 class MainPage {
-    private $id, $description;
+    private $id, $description, $missionStatement;
 
     /**
      * MainPage constructor.
      * @param $id
      * @param $description
+     * @param $missionStatement
      */
-    public function __construct($id, $description) {
+    public function __construct($id, $description, $missionStatement) {
         $this->id = $id;
         $this->description = $description;
+        $this->missionStatement = $missionStatement;
     }
 
     /**
@@ -45,5 +47,19 @@ class MainPage {
      */
     public function setDescription($description) {
         $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMissionStatement() {
+        return $this->missionStatement;
+    }
+
+    /**
+     * @param mixed $missionStatement
+     */
+    public function setMissionStatement($missionStatement) {
+        $this->missionStatement = $missionStatement;
     }
 }

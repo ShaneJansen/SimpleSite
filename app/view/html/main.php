@@ -3,15 +3,6 @@
 <body>
     <!-- Slide Show -->
     <div id="carousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel" data-slide-to="1"></li>
-            <li data-target="#carousel" data-slide-to="2"></li>
-            <li data-target="#carousel" data-slide-to="3"></li>
-            <li data-target="#carousel" data-slide-to="4"></li>
-            <li data-target="#carousel" data-slide-to="5"></li>
-        </ol>
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox" style="margin: 0 auto;">
             <div class="item active"><img src="/images/school_nku.png" class="center-block"></div>
@@ -30,16 +21,28 @@
         </a>
     </div>
 
-    <div class="container">
+    <div class="container text-center">
+        <div class="spacer-medium"></div>
+        <h1 class="text-muted">Kentucky Academic Advising Association</h1>
         <div class="spacer-medium"></div>
 
         <div class="row">
-            <div class="col-md-6 text-center">
-                <img src="/images/kacada.png">
+            <div class="col-sm-6 text-center">
+                <img class="img-responsive" src="/images/kacada.png" style="margin: 0 auto;">
             </div>
-            <div class="col-md-6 text-center">
-                <?php echo $vars['description']; ?>
+            <div class="col-sm-6 text-left" style="margin-top: 20px;">
+                <p class="lead"><?php echo $vars['mainPage']->getDescription(); ?></p>
             </div>
+        </div>
+
+        <div class="spacer-medium"></div>
+        <h2 class="text-muted">Mission Statement</h2>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8 text-left" style="">
+                <p class="lead"><?php echo $vars['mainPage']->getMissionStatement(); ?></p>
+            </div>
+            <div class="col-sm-2"></div>
         </div>
     </div>
 </body>

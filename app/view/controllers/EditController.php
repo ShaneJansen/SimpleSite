@@ -8,11 +8,12 @@ namespace app\view\controllers;
 
 use app\data\Database;
 use app\data\repositories\MainPageRepo;
+use app\data\repositories\PoliciesPageRepo;
 
 class EditController extends Controller {
     private $database;
     private $pageVars = [];
-    private $mainPageRepo;
+    private $mainPageRepo, $policiesPageRepo;
 
     public function __construct() {
         // Check if we are logged in
@@ -20,10 +21,12 @@ class EditController extends Controller {
         if (!isset($_SESSION['username'])) die(header('Location: /login'));
         $this->database = new Database();
         $this->mainPageRepo = new MainPageRepo($this->database);
+        $this->policiesPageRepo = new PoliciesPageRepo($this->database);
     }
 
     public function getPageVars() {
         $this->pageVars['mainPage'] = $this->mainPageRepo->getPage();
+        $this->pageVars['policiesPage'] = $this->policiesPageRepo->getPage();
         return $this->pageVars;
     }
 
@@ -32,7 +35,16 @@ class EditController extends Controller {
     }
 
     public function postEdit() {
-        $this->mainPageRepo->updatePage($_POST['id'], $_POST['description']);
+        $id = $_POST['id'];
+        $form = $_POST['form'];
+        switch ($form) {
+            case 'mainPage':
+                $this->mainPageRepo->updatePage($id, $_POST['description'], $_POST['missionStatement']);
+                break;
+            case 'policiesPage':
+                $this->policiesPageRepo->updatePage($id, $_POST['policies']);
+                break;
+        }
         $this->pageVars['success'] = 'Page successfully updated.';
         return 'edit';
     }

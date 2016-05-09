@@ -7,13 +7,13 @@
 namespace app\view\controllers;
 
 use app\data\Database;
+use app\data\repositories\BasicPageRepo;
 use app\data\repositories\MainPageRepo;
-use app\data\repositories\PoliciesPageRepo;
 
 class EditController extends Controller {
     private $database;
     private $pageVars = [];
-    private $mainPageRepo, $policiesPageRepo;
+    private $mainPageRepo, $basicPageRepo;
 
     public function __construct() {
         // Check if we are logged in
@@ -21,12 +21,12 @@ class EditController extends Controller {
         if (!isset($_SESSION['username'])) die(header('Location: /login'));
         $this->database = new Database();
         $this->mainPageRepo = new MainPageRepo($this->database);
-        $this->policiesPageRepo = new PoliciesPageRepo($this->database);
+        $this->basicPageRepo = new BasicPageRepo($this->database);
     }
 
     public function getPageVars() {
         $this->pageVars['mainPage'] = $this->mainPageRepo->getPage();
-        $this->pageVars['policiesPage'] = $this->policiesPageRepo->getPage();
+        $this->pageVars['basicPages'] = $this->basicPageRepo->getPages();
         return $this->pageVars;
     }
 
@@ -41,8 +41,8 @@ class EditController extends Controller {
             case 'mainPage':
                 $this->mainPageRepo->updatePage($id, $_POST['description'], $_POST['missionStatement']);
                 break;
-            case 'policiesPage':
-                $this->policiesPageRepo->updatePage($id, $_POST['policies']);
+            case 'basicPage':
+                $this->basicPageRepo->updatePage($id, $_POST['text']);
                 break;
         }
         $this->pageVars['success'] = 'Page successfully updated.';

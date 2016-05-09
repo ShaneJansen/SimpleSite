@@ -1,23 +1,18 @@
 <?php include 'includes/header.php'?>
 
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>
-    $(document).delegate('.tabbed', 'keydown', function(e) {
-        var keyCode = e.keyCode || e.which;
-
-        if (keyCode == 9) {
-            e.preventDefault();
-            var start = $(this).get(0).selectionStart;
-            var end = $(this).get(0).selectionEnd;
-
-            // Set textarea value to: text before caret + tab + text after caret
-            $(this).val($(this).val().substring(0, start)
-                + "\t"
-                + $(this).val().substring(end));
-
-            // Put caret at right position again
-            $(this).get(0).selectionStart =
-                $(this).get(0).selectionEnd = start + 1;
-        }
+    tinymce.init({
+        selector:'.editorSmall',
+        height: 100
+    });
+    tinymce.init({
+        selector:'.editorMedium',
+        height: 300
+    });
+    tinymce.init({
+        selector:'.editorLarge',
+        height: 500
     });
 </script>
 
@@ -38,7 +33,9 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home Page</a></li>
-            <li role="presentation"><a href="#policies" aria-controls="policies" role="tab" data-toggle="tab">By-Laws & Policies</a></li>
+            <?php foreach($vars['basicPages'] as $basicPage): ?>
+                <li role="presentation"><a href="#<?php echo $basicPage->getTag(); ?>" role="tab" data-toggle="tab"><?php echo $basicPage->getTitle(); ?></a></li>
+            <?php endforeach; ?>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
@@ -47,10 +44,10 @@
                 <form method="post" style="margin-top: 20px;">
                     <input type="hidden" name="id" value="<?php echo $vars['mainPage']->getId(); ?>">
                     <h4>Description</h4>
-                    <textarea class="form-control tabbed" name="description" rows="5"><?php echo $vars['mainPage']->getDescription(); ?></textarea>
+                    <textarea class="editorSmall" name="description"><?php echo $vars['mainPage']->getDescription(); ?></textarea>
                     <br>
                     <h4>Mission Statement</h4>
-                    <textarea class="form-control tabbed" name="missionStatement" rows="5"><?php echo $vars['mainPage']->getMissionStatement(); ?></textarea>
+                    <textarea class="editorSmall" name="missionStatement"><?php echo $vars['mainPage']->getMissionStatement(); ?></textarea>
                     <br>
                     <span class="success"><?php if (isset($vars['success'])) echo $vars['success']; ?></span>
                     <br>
@@ -58,19 +55,22 @@
                 </form>
             </div>
 
-            <!-- 2nd page -->
-            <div role="tabpanel" class="tab-pane fade" id="policies">
-                <form method="post" style="margin-top: 20px;">
-                    <input type="hidden" name="id" value="<?php echo $vars['policiesPage']->getId(); ?>">
-                    <h4>By-Laws & Policies</h4>
-                    <textarea class="form-control tabbed" name="policies" rows="15"><?php echo $vars['policiesPage']->getPolicies(); ?></textarea>
-                    <br>
-                    <span class="success"><?php if (isset($vars['success'])) echo $vars['success']; ?></span>
-                    <br>
-                    <button type="submit" name="form" value="policiesPage" class="btn btn-primary">Update</button>
-                </form>
-            </div>
+            <!-- Basic pages -->
+            <?php foreach($vars['basicPages'] as $basicPage): ?>
+                <div role="tabpanel" class="tab-pane fade" id="<?php echo $basicPage->getTag(); ?>">
+                    <form method="post" style="margin-top: 20px;">
+                        <input type="hidden" name="id" value="<?php echo $basicPage->getId(); ?>">
+                        <h4><?php echo $basicPage->getTitle(); ?></h4>
+                        <textarea class="editorLarge" name="text"><?php echo $basicPage->getText(); ?></textarea>
+                        <br>
+                        <span class="success"><?php if (isset($vars['success'])) echo $vars['success']; ?></span>
+                        <br>
+                        <button type="submit" name="form" value="basicPage" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+            <?php endforeach; ?>
         </div>
+        <div class="spacer-medium"></div>
     </div>
 </body>
 

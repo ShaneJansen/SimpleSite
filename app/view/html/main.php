@@ -44,6 +44,25 @@
             </div>
             <div class="col-sm-2"></div>
         </div>
+
+        <div class="spacer-medium"></div>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://www.nacada.ksu.edu" target="_blank">
+                            <img class="img-responsive" src="/images/nacada.png" style="margin: 0 auto;">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/Kacada-442849522558947" target="_blank">
+                            <img class="img-responsive" src="/images/facebook.png" style="margin: 0 auto;">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="spacer-medium"></div>
     </div>
 </body>
 

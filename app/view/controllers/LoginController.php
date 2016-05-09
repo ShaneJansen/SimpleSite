@@ -17,6 +17,9 @@ class LoginController extends Controller {
     }
 
     public function getLogin() {
+        // Check if we are logged in
+        session_start();
+        if (isset($_SESSION['username'])) die(header('Location: /edit'));
         return 'login';
     }
 
@@ -36,7 +39,7 @@ class LoginController extends Controller {
         }
     }
 
-    public function postLogout() {
+    public function getLogout() {
         session_start();
         session_unset();
         session_destroy();

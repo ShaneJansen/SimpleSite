@@ -3,7 +3,7 @@
         <div class="footer">
             <div class="row">
                 <div class="col-sm-6 text-left">
-                    KACADA © 2016
+                    KACADA &copy; 2016
                 </div>
                 <div class="col-sm-6 text-right">
                     <a href="/login">Login</a>

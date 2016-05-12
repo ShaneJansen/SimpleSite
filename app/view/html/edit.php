@@ -4,15 +4,18 @@
 <script>
     tinymce.init({
         selector:'.editorSmall',
-        height: 100
+        height: 100,
+        plugins: "code"
     });
     tinymce.init({
         selector:'.editorMedium',
-        height: 300
+        height: 300,
+        plugins: "code"
     });
     tinymce.init({
         selector:'.editorLarge',
-        height: 500
+        height: 500,
+        plugins: "code"
     });
 </script>
 

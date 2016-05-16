@@ -4,6 +4,7 @@ html, body {
 
 body {
     margin-bottom: 50px; /* For footer */
+    overflow-x: hidden;
 }
 
 p {
@@ -16,10 +17,6 @@ p {
 
 .footer {
     margin-top: 10px;
-}
-
-.spacer-medium {
-    margin-top: 50px;
 }
 
 .error {

@@ -31,8 +31,6 @@
             </div>
         </div>
 
-        <div class="spacer-medium"></div>
-
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home Page</a></li>
@@ -73,7 +71,6 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="spacer-medium"></div>
     </div>
 </body>
 

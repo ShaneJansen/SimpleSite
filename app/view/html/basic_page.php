@@ -2,9 +2,7 @@
 
 <body>
 <div class="container text-center">
-    <div class="spacer-medium"></div>
-    <h2 class="text-muted"><?php echo $vars['basicPage']->getTitle(); ?></h2>
-    <div class="spacer-medium"></div>
+    <h2 style="margin: 50px 0 20px 0;" class="text-muted"><?php echo $vars['basicPage']->getTitle(); ?></h2>
 
     <div class="row">
         <div class="col-sm-2"></div>
@@ -13,7 +11,7 @@
         </div>
         <div class="col-sm-2"></div>
     </div>
-</div>
+</>
 </body>
 
 <?php include 'includes/footer.php'?>

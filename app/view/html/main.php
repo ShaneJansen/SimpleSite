@@ -33,8 +33,8 @@
     <div class="text-center">
         <div class="container-fluid">
             <div class="row">
-                <h1 style="margin: 50px 20px 50px 20px;" class="text-muted">Kentucky Academic Advising Association</h1>
-                <div class="row">
+                <h1 style="margin: 100px 20px 100px 20px;" class="text-muted">Kentucky Academic Advising Association</h1>
+                <div style="padding: 100px 0 100px 0; background-color: #f2f2f2;" class="row">
                     <a href="/vision-and-mission" style="color: inherit;">
                         <div class="col-sm-4">
                             <i style="font-size: 5em;" class="material-icons">remove_red_eye</i>
@@ -82,7 +82,7 @@
         </div>
 
         <div class="container">
-            <div style="margin: 50px 0 50px 0;">
+            <div style="margin: 100px 0 50px 0;">
                 <div class="row">
                     <div class="col-sm-6">
                         <a href="https://www.nacada.ksu.edu" target="_blank">
